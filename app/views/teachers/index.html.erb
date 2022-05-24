@@ -1,0 +1,25 @@
+<div class="max-w-7xl mx-auto mt-12">
+  <%= render "teachers", teachers: @teachers %>
+
+  <div>
+    <%= "Per page" %>
+    <%= link_to "15", teachers_path(:show => "15") %>
+    <%= link_to "25", teachers_path(:show => "25") %>
+    <%= link_to "50", teachers_path(:show => "50") %>
+  </div>
+
+  <div id="pager" class="min-w-full my-8 flex justify-between">
+    <div>
+      <% if @pagy.prev %>
+        <%= link_to "< Previous page", teachers_path(page: @pagy.prev, show: @show_records), class: "rounded py-3 px-5 bg-gray-600 text-black block hover:bg-gray-800" %>
+      <% end %>
+    </div>
+    <div class="text-right">
+      <% if @pagy.next %>
+        <%= link_to "Next page >", teachers_path(page: @pagy.next, show: @show_records), class: "rounded py-3 px-5 bg-gray-600 text-black block hover:bg-gray-800" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,38 @@
+<%= turbo_frame_tag "teachers", class: "shadow overflow-hidden rounded border-b border-gray-200" do %>
+  <table class="min-w-full bg-white">
+    <thead class="bg-gray-800 text-white">
+      <tr>
+        <th id="teachers-id" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+          <%= sort_indicator if params[:column] == "id" %>
+          <%= sort_link(column: "id", label: "ID") %>
+        </th>
+
+        <th id="teachers-name" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+          <%= sort_indicator if params[:column] == "name" %>
+          <%= sort_link(column: "name", label: "Teacher Name") %>
+        </th>
+
+        <th id="teachers-school" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+          <%= sort_indicator if params[:column] == "schools.name" %>
+          <%= sort_link(column: "schools.name", label: "School") %>
+        </th>
+
+        <th id="teachers-year" class="text-left py-3 px-6 uppercase font-semibold text-sm hover:cursor-pointer relative">
+          <%= sort_indicator if params[:column] == "school_year" %>
+          <%= sort_link(column: "school_year", label: "Year") %>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody class="text-gray-700">
+      <% teachers.each do |teacher| %>
+        <tr>
+          <td class="text-left py-3 px-6"><%= teacher.id %></td>
+          <td class="text-left py-3 px-6"><%= teacher.name %></td>
+          <td class="text-left py-3 px-6"><%= teacher.school.name %></td>
+          <td class="text-left py-3 px-6"><%= teacher.school_year %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
